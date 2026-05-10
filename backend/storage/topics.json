@@ -1,7 +1,12 @@
 [
   {
     "id": "5bfbef68-619a-4107-9d60-04ad816d6685",
-    "title": "Shinkansen tickets",
+    "title": "Bullet train tickets",
     "category": "Transport"
+  },
+  {
+    "id": "811000ac-b626-45cf-837b-9115a14b08c0",
+    "title": "Hostel Tokyo",
+    "category": "Accommodations"
   }
 ]
