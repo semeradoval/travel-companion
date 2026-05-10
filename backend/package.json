@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Travel Companion backend - Node.js + Express REST API",
+  "keywords": [
+    "travel",
+    "companion",
+    "backend",
+    "express"
+  ],
+  "license": "MIT",
+  "author": "Lenka Semerádová",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
