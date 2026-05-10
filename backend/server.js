@@ -1,5 +1,6 @@
 const express = require('express');
 const topicRoutes = require('./routes/topic-routes');
+const entryRoutes = require('./routes/entry-routes');
 
 const app = express();
 const PORT = 3000;
@@ -11,6 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/topic', topicRoutes);
+app.use('/entry', entryRoutes);
 
 app.listen(PORT, () => {
 	console.log(`Server listening on http://localhost:${PORT}`);
