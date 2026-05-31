@@ -63,6 +63,15 @@ Home (/)
 |---|---|---|---|
 | — | — | — | Žádné props, entry point aplikace |
 
+### Component Diagram
+
+```
+Page
+├── Header (Moje zápisky / Kategorie)
+├── CategoryCard ×6
+└── BottomNav (Přehled | Hledat | Přidat)
+```
+
 ### Component Render
 
 | Název | Pravidla |
@@ -80,6 +89,15 @@ Home (/)
 |---|---|---|---|
 | category | string | — | Název kategorie (Transport / Sightseeing / Accommodations / Food / Shops / Phrases) |
 
+### Component Diagram
+
+```
+Page
+├── Header (zpět + ikona kategorie + „Témata")
+├── TopicCard ×N  /  EmptyState
+└── BottomNav (Přehled | Hledat | Přidat)
+```
+
 ### Component Render
 
 | Název | Pravidla |
@@ -96,6 +114,16 @@ Home (/)
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | id | string | — | ID tématu (topicId) |
+
+### Component Diagram
+
+```
+Page
+├── Header (zpět + název tématu + badge kategorie + EditTopicButton + DeleteTopicButton)
+├── EntryCard ×N  /  EmptyState
+├── FAB (+)
+└── BottomNav (Přehled | Hledat | Přidat)
+```
 
 ### Component Render
 
@@ -119,6 +147,16 @@ Home (/)
 | id | string | — | ID tématu (pro navigaci zpět) |
 | entryId | string | — | ID zápisku (entry) |
 
+### Component Diagram
+
+```
+Page
+├── Header (zpět + název tématu + badge kategorie + EditButton + DeleteButton)
+├── EntryTitle
+├── EntryText
+└── BottomNav (Přehled | Hledat | Přidat)
+```
+
 ### Component Render
 
 | Název | Pravidla |
@@ -137,6 +175,16 @@ Home (/)
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | defaultCategory | string | undefined | Volitelné předvyplnění kategorie |
+
+### Component Diagram
+
+```
+Page
+├── Header (Zrušit + „Nové téma" + Uložit)
+├── CategorySelect
+├── TitleInput + CharCounter
+└── BottomNav (Přehled | Hledat | Přidat)
+```
 
 ### Component Render
 
@@ -157,6 +205,18 @@ Home (/)
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | id | string | undefined | Volitelné ID tématu; undefined pokud uživatel přichází z bottom navu |
+
+### Component Diagram
+
+```
+Page
+├── Header (Zrušit + „Nový zápisek" + Uložit)
+├── CategorySelect
+├── TopicSelect (disabled dokud není vybrána kategorie)
+├── TitleInput + CharCounter
+├── TextArea + CharCounter
+└── BottomNav (Přehled | Hledat | Přidat)
+```
 
 ### Component Render
 
@@ -183,6 +243,16 @@ Home (/)
 |---|---|---|---|
 | id | string | — | ID tématu (topicId) k editaci |
 
+### Component Diagram
+
+```
+Page
+├── Header (Zrušit + „Upravit téma" + Uložit)
+├── CategorySelect (předvyplněno)
+├── TitleInput + CharCounter (předvyplněno)
+└── BottomNav (Přehled | Hledat | Přidat)
+```
+
 ### Component Render
 
 | Název | Pravidla |
@@ -202,6 +272,18 @@ Home (/)
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | entryId | string | — | ID zápisku (entry) k editaci |
+
+### Component Diagram
+
+```
+Page
+├── Header (Zrušit + „Upravit zápisek" + Uložit)
+├── CategorySelect (předvyplněno)
+├── TopicSelect (předvyplněno)
+├── TitleInput + CharCounter (předvyplněno)
+├── TextArea + CharCounter (předvyplněno)
+└── BottomNav (Přehled | Hledat | Přidat)
+```
 
 ### Component Render
 
