@@ -1,13 +1,30 @@
-# Travel Companion — Frontend dokumentace (podklad pro UU)
+# Travel Companion — Frontend
+
+React SPA pro cestovní zápisky. Umožňuje CRUD operace nad dvěma entitami: **Travel Topic** a **Travel Entry**.
+
+Součást zadání BCAA „Realizace frontendu" pro kurz Architektura cloudových aplikací (Unicorn University, léto 2026).
+
+## Tech Stack
+
+- React + Vite
+- React Router
+- Tailwind CSS v4
+
+## Spuštění
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend běží na `http://localhost:5173` a volá backend na `http://localhost:3000`.
 
 ---
 
-# User view entry point
+## User view entry point
 
-## SPA diagram (uuBmlDraw #1)
-*Již vyplněno v UU.*
-
-## Routes
+### Routes
 
 | Name | Uri | Description |
 |---|---|---|
@@ -20,8 +37,8 @@
 | Edit Topic | `/topic/:id/edit` | Editace existujícího tématu |
 | Edit Entry | `/entry/:entryId/edit` | Editace existujícího zápisku |
 
-## Spa (uuBmlDraw #2)
-*Nakreslit navigační flow — stejné schéma jako SPA diagram #1:*
+### SPA navigační flow
+
 ```
 Home (/)
   └─ Topic List (/category/:category)
@@ -38,20 +55,15 @@ Home (/)
 
 ---
 
-# Home
+## Home — `/`
 
-**Route Name:** Home
-
-## Properties (props)
+### Properties (props)
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | — | — | — | Žádné props, entry point aplikace |
 
-## Component Diagram
-*Nakreslit: Page → Header (Moje zápisky / Kategorie) → CategoryCard ×6 → BottomNav*
-
-## Component Render
+### Component Render
 
 | Název | Pravidla |
 |---|---|
@@ -60,20 +72,15 @@ Home (/)
 
 ---
 
-# Topic List
+## Topic List — `/category/:category`
 
-**Route Name:** Topic List
-
-## Properties (props)
+### Properties (props)
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | category | string | — | Název kategorie (Transport / Sightseeing / Accommodations / Food / Shops / Phrases) |
 
-## Component Diagram
-*Nakreslit: Page → Header (zpět + ikona kategorie + „Témata") → TopicCard ×N / EmptyState → BottomNav*
-
-## Component Render
+### Component Render
 
 | Název | Pravidla |
 |---|---|
@@ -82,20 +89,15 @@ Home (/)
 
 ---
 
-# Topic Detail
+## Topic Detail — `/topic/:id`
 
-**Route Name:** Topic Detail
-
-## Properties (props)
+### Properties (props)
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | id | string | — | ID tématu (topicId) |
 
-## Component Diagram
-*Nakreslit: Page → Header (zpět + název tématu + badge kategorie + EditTopicButton + DeleteTopicButton) → EntryCard ×N / EmptyState → FAB → BottomNav*
-
-## Component Render
+### Component Render
 
 | Název | Pravidla |
 |---|---|
@@ -108,21 +110,16 @@ Home (/)
 
 ---
 
-# Entry Detail
+## Entry Detail — `/topic/:id/entry/:entryId`
 
-**Route Name:** Entry Detail
-
-## Properties (props)
+### Properties (props)
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | id | string | — | ID tématu (pro navigaci zpět) |
 | entryId | string | — | ID zápisku (entry) |
 
-## Component Diagram
-*Nakreslit: Page → Header (zpět + název tématu + badge kategorie + EditButton + DeleteButton) → EntryTitle → EntryText → BottomNav*
-
-## Component Render
+### Component Render
 
 | Název | Pravidla |
 |---|---|
@@ -133,20 +130,15 @@ Home (/)
 
 ---
 
-# Create Topic
+## Create Topic — `/topic/create`
 
-**Route Name:** Create Topic
-
-## Properties (props)
+### Properties (props)
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | defaultCategory | string | undefined | Volitelné předvyplnění kategorie |
 
-## Component Diagram
-*Nakreslit: Page → Header (Zrušit + „Nové téma" + Uložit) → CategorySelect → TitleInput + CharCounter → SubmitButton → BottomNav*
-
-## Component Render
+### Component Render
 
 | Název | Pravidla |
 |---|---|
@@ -158,20 +150,15 @@ Home (/)
 
 ---
 
-# Create Entry
+## Create Entry — `/topic/:id/entry/create`
 
-**Route Name:** Create Entry
-
-## Properties (props)
+### Properties (props)
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | id | string | undefined | Volitelné ID tématu; undefined pokud uživatel přichází z bottom navu |
 
-## Component Diagram
-*Nakreslit: Page → Header (Zrušit + „Nový zápisek" + Uložit) → CategorySelect → TopicSelect → TitleInput + CharCounter → TextArea + CharCounter → SubmitButton → BottomNav*
-
-## Component Render
+### Component Render
 
 | Název | Pravidla |
 |---|---|
@@ -184,24 +171,19 @@ Home (/)
 | SubmitButton | Disabled if: kategorie nevybrána NEBO téma nevybráno NEBO title prázdný NEBO title > 30 znaků NEBO text > 1800 znaků |
 | ErrorMessage | Do not display if: formulář je validní |
 
-> **Design decision:** CategorySelect → TopicSelect kaskáda. Backend přijímá pouze topicId — kategorie slouží jen jako filtr na frontendu. Nové téma lze vytvořit inline z TopicSelect bez opuštění formuláře.
+> **Design decision:** Formulář přidává krok CategorySelect → TopicSelect. Backend přijímá pouze `topicId` — kategorie slouží jen jako filtr na frontendu. Nové téma lze vytvořit inline z TopicSelect bez opuštění formuláře.
 
 ---
 
-# Edit Topic
+## Edit Topic — `/topic/:id/edit`
 
-**Route Name:** Edit Topic
-
-## Properties (props)
+### Properties (props)
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | id | string | — | ID tématu (topicId) k editaci |
 
-## Component Diagram
-*Nakreslit: Page → Header (Zrušit + „Upravit téma" + Uložit) → CategorySelect (předvyplněno) → TitleInput + CharCounter (předvyplněno) → SubmitButton → BottomNav*
-
-## Component Render
+### Component Render
 
 | Název | Pravidla |
 |---|---|
@@ -213,20 +195,15 @@ Home (/)
 
 ---
 
-# Edit Entry
+## Edit Entry — `/entry/:entryId/edit`
 
-**Route Name:** Edit Entry
-
-## Properties (props)
+### Properties (props)
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
 | entryId | string | — | ID zápisku (entry) k editaci |
 
-## Component Diagram
-*Nakreslit: Page → Header (Zrušit + „Upravit zápisek" + Uložit) → CategorySelect (předvyplněno) → TopicSelect (předvyplněno) → TitleInput + CharCounter → TextArea + CharCounter → SubmitButton → BottomNav*
-
-## Component Render
+### Component Render
 
 | Název | Pravidla |
 |---|---|
@@ -238,3 +215,25 @@ Home (/)
 | CharCounter (text) | Vždy zobrazit (zbývající znaky z 1800) |
 | SubmitButton | Disabled if: title prázdný NEBO title > 30 znaků NEBO text > 1800 znaků |
 | ErrorMessage | Do not display if: formulář je validní |
+
+---
+
+## Navigace
+
+### Bottom nav (přítomen na všech screenech)
+
+| Položka | Akce |
+|---|---|
+| Přehled | Navigace na Home `/` |
+| Hledat | Vyhledávání |
+| Přidat | Otevře Create Entry formulář |
+
+### FAB
+
+| Screen | FAB |
+|---|---|
+| Home | ❌ |
+| Topic List | ❌ |
+| Topic Detail | ✅ — přidá zápisek do aktuálního tématu |
+| Entry Detail | ❌ |
+| Formuláře (Create/Edit) | ❌ |
