@@ -45,14 +45,11 @@ export default function Home() {
                   background: cat.bg, border: `2px solid ${cat.border}`,
                   borderRadius: 16, padding: 16, textAlign: 'left', cursor: 'pointer',
                 }}>
-                  <div style={{
-                    width: 44, height: 44, borderRadius: 10,
-                    border: `2px solid ${cat.border}`, marginBottom: 12,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: cat.bg, fontSize: 22,
-                  }}>
-                    {categoryEmoji(k)}
-                  </div>
+                  <img
+                    src={cat.icon}
+                    alt={cat.label}
+                    style={{ width: 44, height: 44, objectFit: 'contain', marginBottom: 12, border: `2px solid ${cat.border}`, borderRadius: 10 }}
+                  />
                   <p style={{ fontSize: 16, fontWeight: 600, color: cat.text, margin: 0 }}>{cat.label}</p>
                   <p style={{ fontSize: 14, fontWeight: 500, color: cat.sub, margin: '2px 0 0' }}>
                     {count === 0 ? 'žádná témata' : `${count} ${topicWord(count)}`}
@@ -67,10 +64,6 @@ export default function Home() {
   )
 }
 
-function categoryEmoji(key) {
-  const map = { Transport: '🚇', Sightseeing: '🏰', Accommodations: '🛏️', Food: '🍽️', Shops: '🛍️', Phrases: '💬' }
-  return map[key] || '📁'
-}
 
 function topicWord(n) {
   if (n === 1) return 'téma'

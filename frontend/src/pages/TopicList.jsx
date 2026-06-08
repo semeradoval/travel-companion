@@ -27,9 +27,7 @@ export default function TopicList() {
           Zpět
         </button>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 4 }}>
-          <div style={{ width: 44, height: 44, borderRadius: 12, background: cat.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>
-            {categoryEmoji(category)}
-          </div>
+          <img src={cat.icon} alt={cat.label} style={{ width: 44, height: 44, objectFit: 'contain', flexShrink: 0, border: `2px solid ${cat.border}`, borderRadius: 10 }} />
           <div>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: cat.sub, margin: 0 }}>{cat.label}</p>
             <h2 style={{ fontSize: 20, fontWeight: 700, color: '#111827', margin: 0 }}>Témata</h2>
@@ -59,10 +57,6 @@ export default function TopicList() {
   )
 }
 
-function categoryEmoji(key) {
-  const map = { Transport: '🚇', Sightseeing: '🏰', Accommodations: '🛏️', Food: '🍽️', Shops: '🛍️', Phrases: '💬' }
-  return map[key] || '📁'
-}
 
 const wrap = { maxWidth: 430, margin: '0 auto', minHeight: '100vh', background: '#f9fafb', display: 'flex', flexDirection: 'column', fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }
 const backBtn = { display: 'flex', alignItems: 'center', gap: 4, fontSize: 14, fontWeight: 600, color: '#374151', background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', minHeight: 44 }
