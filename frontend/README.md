@@ -132,7 +132,7 @@ Page
 | TopicHeader | Vždy zobrazit (název tématu + kategorie badge) |
 | EntryCard | Do not display if: téma nemá žádné zápisky (zobraz EmptyState) |
 | EmptyState | Do not display if: existuje alespoň jeden zápisek |
-| AddEntryButton (FAB) | Vždy zobrazit; otevře Create Entry s předvyplněným topicId |
+| AddEntryButton (FAB) | Vždy zobrazit; otevře Create Entry s předvyplněným topicId; při hoveru zobrazí tooltip „Přidat do tohoto tématu" |
 | EditTopicButton | Vždy zobrazit |
 | DeleteTopicButton | Vždy zobrazit; po kliknutí zobrazit potvrzovací dialog |
 
