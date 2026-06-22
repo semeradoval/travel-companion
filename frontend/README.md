@@ -49,7 +49,7 @@ Home (/)
             └─ Entry Detail (/topic/:id/entry/:entryId)
                   └─ Edit Entry (/entry/:entryId/edit)
 
-[Bottom nav — Přidat] → Create Entry
+[Bottom nav — Přidat] → Create Entry (/entry/create)
                               └─ [inline] Create Topic
 ```
 
@@ -198,7 +198,7 @@ Page
 
 ---
 
-## Create Entry — `/topic/:id/entry/create`
+## Create Entry — `/entry/create` nebo `/topic/:id/entry/create`
 
 ### Properties (props)
 
