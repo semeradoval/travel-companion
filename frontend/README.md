@@ -33,7 +33,7 @@ Frontend běží na `http://localhost:5173` a volá backend na `http://localhost
 | Topic Detail | `/topic/:id` | Detail tématu — seznam zápisků |
 | Entry Detail | `/topic/:id/entry/:entryId` | Detail a čtení zápisku |
 | Create Topic | `/topic/create` | Formulář pro vytvoření nového tématu |
-| Create Entry | `/topic/:id/entry/create` | Formulář pro přidání nového zápisku |
+| Create Entry | `/entry/create` nebo `/topic/:id/entry/create` | Formulář pro přidání nového zápisku |
 | Edit Topic | `/topic/:id/edit` | Editace existujícího tématu |
 | Edit Entry | `/entry/:entryId/edit` | Editace existujícího zápisku |
 
@@ -204,7 +204,7 @@ Page
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
-| id | string | undefined | Volitelné ID tématu; undefined pokud uživatel přichází z bottom navu |
+| id | string | — | Volitelné ID tématu; není přítomno pokud uživatel přichází z bottom navu (`/entry/create`) |
 
 ### Component Diagram
 

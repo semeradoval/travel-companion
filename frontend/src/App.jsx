@@ -17,6 +17,7 @@ export default function App() {
         <Route path="/topic/create" element={<CreateTopic />} />
         <Route path="/topic/:id" element={<TopicDetail />} />
         <Route path="/topic/:id/edit" element={<EditTopic />} />
+        <Route path="/entry/create" element={<CreateEntry />} />
         <Route path="/topic/:id/entry/create" element={<CreateEntry />} />
         <Route path="/topic/:id/entry/:entryId" element={<EntryDetail />} />
         <Route path="/entry/:entryId/edit" element={<EditEntry />} />

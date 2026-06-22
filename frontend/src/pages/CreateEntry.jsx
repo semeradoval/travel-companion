@@ -9,11 +9,11 @@ const MAX_TEXT = 1800
 const MAX_TOPIC = 20
 
 export default function CreateEntry() {
-  const { id } = useParams() // může být 'undefined' string z bottom navu
+  const { id } = useParams()
   const navigate = useNavigate()
   const [category, setCategory] = useState('')
   const [topics, setTopics] = useState([])
-  const [topicId, setTopicId] = useState(id !== 'undefined' ? id : '')
+  const [topicId, setTopicId] = useState(id || '')
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
   const [error, setError] = useState('')
@@ -23,7 +23,7 @@ export default function CreateEntry() {
   const [newTopicSaving, setNewTopicSaving] = useState(false)
 
   useEffect(() => {
-    if (id && id !== 'undefined') {
+    if (id) {
       api.topic.get(id).then(t => {
         setCategory(t.category)
         setTopicId(t.id)
