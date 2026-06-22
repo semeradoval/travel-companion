@@ -223,7 +223,7 @@ Page
 | Název | Pravidla |
 |---|---|
 | CategorySelect | Vždy zobrazit; výběr z 6 fixních kategorií; předvyplněno pokud lze odvodit z id |
-| TopicSelect | Vždy zobrazit; disabled dokud není vybrána kategorie; předvyplněno dle id; obsahuje možnost vytvoření nového tématu inline |
+| TopicSelect | Vždy zobrazit; disabled dokud není vybrána kategorie; předvyplněno dle id; pod výběrem se zobrazí tlačítko „+ Vytvořit nové téma" — rozbalí inline formulář pro vytvoření tématu bez opuštění stránky |
 | TitleInput | Vždy zobrazit; max 30 znaků |
 | TextArea | Vždy zobrazit; max 1800 znaků |
 | CharCounter (title) | Vždy zobrazit (zbývající znaky z 30) |

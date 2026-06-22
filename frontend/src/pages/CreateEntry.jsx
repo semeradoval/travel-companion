@@ -6,6 +6,7 @@ import BottomNav from '../components/BottomNav'
 
 const MAX_TITLE = 30
 const MAX_TEXT = 1800
+const MAX_TOPIC = 20
 
 export default function CreateEntry() {
   const { id } = useParams() // může být 'undefined' string z bottom navu
@@ -17,6 +18,9 @@ export default function CreateEntry() {
   const [text, setText] = useState('')
   const [error, setError] = useState('')
   const [saving, setSaving] = useState(false)
+  const [showNewTopic, setShowNewTopic] = useState(false)
+  const [newTopicTitle, setNewTopicTitle] = useState('')
+  const [newTopicSaving, setNewTopicSaving] = useState(false)
 
   useEffect(() => {
     if (id && id !== 'undefined') {
@@ -33,6 +37,22 @@ export default function CreateEntry() {
   }, [category])
 
   const valid = category && topicId && title.trim() && title.length <= MAX_TITLE && text.length <= MAX_TEXT
+
+  async function handleCreateTopic() {
+    if (!newTopicTitle.trim() || newTopicTitle.length > MAX_TOPIC) return
+    setNewTopicSaving(true)
+    try {
+      const t = await api.topic.create({ title: newTopicTitle.trim(), category })
+      setTopics(prev => [...prev, t])
+      setTopicId(t.id)
+      setShowNewTopic(false)
+      setNewTopicTitle('')
+    } catch (e) {
+      setError(e?.message || 'Chyba při vytváření tématu.')
+    } finally {
+      setNewTopicSaving(false)
+    }
+  }
 
   async function handleSubmit() {
     if (!valid) return
@@ -71,10 +91,33 @@ export default function CreateEntry() {
             <option value="">{category ? 'Vyber téma…' : 'Nejdřív vyber kategorii…'}</option>
             {topics.map(t => <option key={t.id} value={t.id}>{t.title}</option>)}
           </select>
-          {category && topics.length === 0 && (
-            <button onClick={() => navigate('/topic/create')} style={{ marginTop: 8, fontSize: 13, color: '#6366f1', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+          {category && !showNewTopic && (
+            <button onClick={() => setShowNewTopic(true)} style={{ marginTop: 8, fontSize: 13, color: '#6366f1', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
               + Vytvořit nové téma
             </button>
+          )}
+          {showNewTopic && (
+            <div style={{ marginTop: 12, padding: 16, background: '#f3f4f6', borderRadius: 16, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <label style={labelStyle}>Název nového tématu</label>
+                <span style={{ fontSize: 13, color: newTopicTitle.length > MAX_TOPIC ? '#dc2626' : '#6b7280' }}>{newTopicTitle.length} / {MAX_TOPIC}</span>
+              </div>
+              <input
+                value={newTopicTitle}
+                onChange={e => setNewTopicTitle(e.target.value)}
+                placeholder="Název tématu…"
+                style={inputStyle(newTopicTitle.length > MAX_TOPIC)}
+                autoFocus
+              />
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button onClick={handleCreateTopic} disabled={!newTopicTitle.trim() || newTopicTitle.length > MAX_TOPIC || newTopicSaving} style={submitBtn(!newTopicTitle.trim() || newTopicTitle.length > MAX_TOPIC || newTopicSaving)}>
+                  {newTopicSaving ? 'Ukládám…' : 'Vytvořit'}
+                </button>
+                <button onClick={() => { setShowNewTopic(false); setNewTopicTitle('') }} style={{ fontSize: 14, fontWeight: 600, color: '#374151', background: 'none', border: 'none', cursor: 'pointer', padding: '8px 0' }}>
+                  Zrušit
+                </button>
+              </div>
+            </div>
           )}
         </div>
 
