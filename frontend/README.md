@@ -307,8 +307,7 @@ Page
 | Položka | Akce |
 |---|---|
 | Přehled | Navigace na Home `/` |
-| Hledat | Vyhledávání |
-| Přidat | Otevře Create Entry formulář |
+| Přidat | Otevře formulář pro nový zápisek |
 
 ### FAB
 
