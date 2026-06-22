@@ -69,7 +69,7 @@ Home (/)
 Page
 ├── Header (Moje zápisky / Kategorie)
 ├── CategoryCard ×6
-└── BottomNav (Přehled | Hledat | Přidat)
+└── BottomNav (Přehled | Přidat)
 ```
 
 ### Component Render
@@ -95,7 +95,7 @@ Page
 Page
 ├── Header (zpět + ikona kategorie + „Témata")
 ├── TopicCard ×N  /  EmptyState
-└── BottomNav (Přehled | Hledat | Přidat)
+└── BottomNav (Přehled | Přidat)
 ```
 
 ### Component Render
@@ -122,7 +122,7 @@ Page
 ├── Header (zpět + název tématu + badge kategorie + EditTopicButton + DeleteTopicButton)
 ├── EntryCard ×N  /  EmptyState
 ├── FAB (+)
-└── BottomNav (Přehled | Hledat | Přidat)
+└── BottomNav (Přehled | Přidat)
 ```
 
 ### Component Render
@@ -154,7 +154,7 @@ Page
 ├── Header (zpět + název tématu + badge kategorie + EditButton + DeleteButton)
 ├── EntryTitle
 ├── EntryText
-└── BottomNav (Přehled | Hledat | Přidat)
+└── BottomNav (Přehled | Přidat)
 ```
 
 ### Component Render
@@ -174,7 +174,7 @@ Page
 
 | Name | Type | Default value | Description |
 |---|---|---|---|
-| defaultCategory | string | undefined | Volitelné předvyplnění kategorie |
+| — | — | — | Žádné props, kategorie se vybírá ručně ve formuláři |
 
 ### Component Diagram
 
@@ -183,7 +183,7 @@ Page
 ├── Header (Zrušit + „Nové téma" + Uložit)
 ├── CategorySelect
 ├── TitleInput + CharCounter
-└── BottomNav (Přehled | Hledat | Přidat)
+└── BottomNav (Přehled | Přidat)
 ```
 
 ### Component Render
@@ -215,7 +215,7 @@ Page
 ├── TopicSelect (disabled dokud není vybrána kategorie)
 ├── TitleInput + CharCounter
 ├── TextArea + CharCounter
-└── BottomNav (Přehled | Hledat | Přidat)
+└── BottomNav (Přehled | Přidat)
 ```
 
 ### Component Render
@@ -250,7 +250,7 @@ Page
 ├── Header (Zrušit + „Upravit téma" + Uložit)
 ├── CategorySelect (předvyplněno)
 ├── TitleInput + CharCounter (předvyplněno)
-└── BottomNav (Přehled | Hledat | Přidat)
+└── BottomNav (Přehled | Přidat)
 ```
 
 ### Component Render
@@ -282,7 +282,7 @@ Page
 ├── TopicSelect (předvyplněno)
 ├── TitleInput + CharCounter (předvyplněno)
 ├── TextArea + CharCounter (předvyplněno)
-└── BottomNav (Přehled | Hledat | Přidat)
+└── BottomNav (Přehled | Přidat)
 ```
 
 ### Component Render
